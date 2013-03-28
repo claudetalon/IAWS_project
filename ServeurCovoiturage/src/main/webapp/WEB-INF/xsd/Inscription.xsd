@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+targetNamespace="http://mycompany.com/hr/schemas"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:hr="http://mycompany.com/hr/schemas">
+    
+	<xs:element name="Inscription">
+      <xs:complexType>
+       <xs:all>
+         <xs:element name="pers" type="hr:PersonnelType"/>
+       </xs:all>
+      </xs:complexType>
+    </xs:element>
+	
+ 	<xs:complexType name="PersonnelType">
+ 		<xs:sequence>
+ 			<xs:element name="nom" type="xs:string"/>
+ 			<xs:element name="prenom" type="xs:string"/>
+ 			<xs:element name="mail">
+ 				<xs:simpleType>
+	 				<xs:restriction base="xs:string">
+	          			<xs:pattern value="[A-Za-z0-9._%+-]+@univ-tlse3.fr"/>
+       				</xs:restriction>
+       			</xs:simpleType>
+ 			</xs:element>
+ 			<xs:element name="adresse" type="xs:string"/>
+ 		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

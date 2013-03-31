@@ -4,7 +4,9 @@ import iaws.covoiturage.domain.nomenclature.Prenom;
 import iaws.covoiturage.domain.nomenclature.Nom;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
+import iaws.covoiturage.domain.Coordonnee;
 import services.InscriptionService;
+import services.impl.*;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
@@ -40,11 +42,11 @@ public class InscriptionEndpoint {
 		Adresse myAddress = new Adresse(adresse);
 
 		 // invoque le service "CoVoiturageInscriptionService" pour inscrire un personnel
-	    String resultat = InscriptionService.inscrire();
+	    String resultat = inscriptionService.inscrire(myName, myFirstName, myMail, myAddress);
 	    //logger.info(resultat);
 	     
 	     // construit le xml résultat
-	     InscriptionServiceImpl myImpl = new InscriptionServiceImpl();
+	     InscriptionService myImpl = new InscriptionService();
 	     Coordonnee coord = myImpl.getLatitudeAndLongitude(adresse);
 	     Element elt = null;
 	     if(coord != null)

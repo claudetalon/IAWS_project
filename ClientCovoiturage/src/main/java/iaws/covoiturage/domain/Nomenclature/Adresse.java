@@ -1,4 +1,4 @@
-package iaws.covoiturage.domain.Nomenclature;
+package iaws.covoiturage.domain.nomenclature;
 
 public class Adresse {
 	

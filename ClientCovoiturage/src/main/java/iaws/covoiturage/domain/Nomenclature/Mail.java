@@ -1,4 +1,4 @@
-package iaws.covoiturage.domain.Nomenclature;
+package iaws.covoiturage.domain.nomenclature;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,9 +22,9 @@ public class Mail {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+
 	boolean isMail(String mail) {
 		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(mail);
-        return matcher.find();
+		return matcher.find();
 	}
 }

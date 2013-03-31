@@ -4,7 +4,7 @@ import iaws.covoiturage.domain.nomenclature.Prenom;
 import iaws.covoiturage.domain.nomenclature.Nom;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
-import iaws.covoiturage.services.InscriptionService;
+import services.InscriptionService;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;

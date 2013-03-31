@@ -39,9 +39,18 @@ public class InscriptionEndpoint {
 		Mail myMail = new Mail(mail);
 		Adresse myAddress = new Adresse(adresse);
 
-		Element resp = inscriptionService.postUser(myName, myFirstName, myMail, myAddress);
+		 // invoque le service "CoVoiturageInscriptionService" pour inscrire un personnel
+	    String resultat = InscriptionService.inscrire();
+	    //logger.info(resultat);
+	     
+	     // construit le xml résultat
+	     InscriptionServiceImpl myImpl = new InscriptionServiceImpl();
+	     Coordonnee coord = myImpl.getLatitudeAndLongitude(adresse);
+	     Element elt = null;
+	     if(coord != null)
+	     	elt = XmlHelper.getResultsInXml(coord, nom, prenom, mail, adresse);
 
-		return resp;
+	     return  elt;	
 	}
 
 }

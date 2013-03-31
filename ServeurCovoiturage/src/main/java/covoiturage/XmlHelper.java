@@ -19,15 +19,7 @@ public class XmlHelper {
      * @param mail Email du personnel
      * @return  the root Element
      */
-    /*public static Element getRootElementFromFileInClasspath(String filePathInClassPath) throws ParserConfigurationException, IOException, SAXException {
-        DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-
-        // root elements
-        Document doc = docBuilder.parse(new ClassPathResource(filePathInClassPath).getInputStream());
-        return doc.getDocumentElement();
-    }*/
-    
+ 
     public static Element getResultsInXml(Coordonnee coord, String nom, String prenom, String mail, String adresse) {
         //Nous allons commencer notre arborescence en créant la racine XML
    		//qui sera ici "personnes".
@@ -54,9 +46,9 @@ public class XmlHelper {
         Element coordonnees = new Element("coordonnees","http://iaws/ws/contractfirst/inscription");
         racine.addContent(coordonnees);
         Element lat = new Element("latitude","http://iaws/ws/contractfirst/inscription");
-        lat.setText(Float.toString(coord.getLatitude()));
+        lat.setText(Double.toString(coord.getLatitude()));
         Element lon = new Element("longitude","http://iaws/ws/contractfirst/inscription");
-        lon.setText(Float.toString(coord.getLongitude()));
+        lon.setText(Double.toString(coord.getLongitude()));
         coordonnees.addContent(lat);
         coordonnees.addContent(lon);
         

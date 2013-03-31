@@ -11,7 +11,8 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import org.springframework.ws.server.endpoint.annotation.XPathParam;
-import org.w3c.dom.Element;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
 
 @Endpoint
 public class InscriptionEndpoint {
@@ -46,7 +47,7 @@ public class InscriptionEndpoint {
 	    //logger.info(resultat);
 	     
 	     // construit le xml résultat
-	     InscriptionService myImpl = new InscriptionService();
+	     InscriptionImpl myImpl = new InscriptionImpl();
 	     Coordonnee coord = myImpl.getLatitudeAndLongitude(adresse);
 	     Element elt = null;
 	     if(coord != null)

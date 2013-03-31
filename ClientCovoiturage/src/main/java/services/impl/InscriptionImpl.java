@@ -1,5 +1,6 @@
 package services.impl;
 
+import iaws.covoiturage.domain.Coordonnee;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
 import iaws.covoiturage.domain.nomenclature.Nom;
@@ -10,7 +11,12 @@ public class InscriptionImpl implements InscriptionService {
 
 	public String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAddress) {
-		// TODO Auto-generated method stub
+		// TODO Write method
+		return null;
+	}
+
+	public Coordonnee getLatitudeAndLongitude(String adresse) {
+		// TODO Write method
 		return null;
 	}
 }

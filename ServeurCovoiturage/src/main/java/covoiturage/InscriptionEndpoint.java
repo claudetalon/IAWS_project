@@ -1,6 +1,6 @@
 package covoiturage;
 
-import iaws.covoiturage.domain.Nomenclature.Prenom;
+import iaws.covoiturage.domain.nomenclature.Prenom;
 import iaws.covoiturage.domain.nomenclature.Nom;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
@@ -16,7 +16,7 @@ public class InscriptionEndpoint {
 
 	private InscriptionService inscriptionService;
 
-	private static final String NAMESPACE_URI = "http://iaws/ws/contractfirst/covoiturage";
+	private static final String NAMESPACE_URI = "http://mycompany.com/hr/schemas";
 
 	public InscriptionEndpoint(InscriptionService inscriptionService) {
 		this.inscriptionService = inscriptionService;
@@ -24,28 +24,22 @@ public class InscriptionEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "InscriptionRequest")
 	@ResponsePayload
-	public Element handleInscriptionRequest(@XPathParam("/InscriptionRequest/Identite/Nom") String lName,
-			@XPathParam("/InscriptionRequest/Identite/Prenom") String fName,
-			@XPathParam("/InscriptionRequest/Mail/Perso") String perso,
-			@XPathParam("/InscriptionRequest/Mail/Domaine") String domain,
-			@XPathParam("/InscriptionRequest/AdressePostale/Rue") String street,
-			@XPathParam("/InscriptionRequest/AdressePostale/Code") String code,
-			@XPathParam("/InscriptionRequest/AdressePostale/Ville") String city) throws Exception {
+	public Element handleInscriptionRequest(@XPathParam("/Inscription/pers/Nom") String nom,
+			@XPathParam("/Inscription/pers/prenom") String prenom,
+			@XPathParam("/Inscription/pers/adresse") String adresse,
+			@XPathParam("/Inscription/pers/mail") String mail) throws Exception {
 
-		System.out.println("lName: " + lName + "||");
-		System.out.println("fName: " + fName + "||");
-		System.out.println("Perso: " + perso + "||");
-		System.out.println("domain: " + domain + "||");
-		System.out.println("street: " + street + "||");
-		System.out.println("code: " + code + "||");
-		System.out.println("city: " + city + "||");
+		System.out.println("lName: " + nom + "||");
+		System.out.println("fName: " + prenom + "||");
+		System.out.println("Perso: " + adresse + "||");
+		System.out.println("domain: " + mail + "||");
 
-		LastName lastName = new LastName(lName);
-		FirstName firstName = new FirstName(fName);
-		Mail mail = new Mail(perso, domain);
-		MailingAddress mailingAddress = new MailingAddress(street, code, city);
+		Nom myName = new Nom(nom);
+		Prenom myFirstName = new Prenom(prenom);
+		Mail myMail = new Mail(mail);
+		Adresse myAddress = new Adresse(adresse);
 
-		Element resp = inscriptionService.postTeacher(lastName, firstName, mail, mailingAddress);
+		Element resp = inscriptionService.postUser(myName, myFirstName, myMail, myAddress);
 
 		return resp;
 	}

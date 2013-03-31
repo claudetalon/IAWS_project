@@ -36,6 +36,11 @@
   			<artifactId>junit</artifactId>
   			<version>4.11</version>
   		</dependency>
+        <dependency>
+        	<groupId>ClientCovoiturage</groupId>
+        	<artifactId>ClientCovoiturage</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
     <reporting>

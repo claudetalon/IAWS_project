@@ -28,9 +28,10 @@ public class InscriptionEndpoint {
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "InscriptionRequest")
 	@ResponsePayload
 	public Element handleInscriptionRequest(@XPathParam("/Inscription/pers/nom") String nom,
-			@XPathParam("/Inscription/pers/prenom") String prenom,
-			@XPathParam("/Inscription/pers/adresse") String adresse,
-			@XPathParam("/Inscription/pers/mail") String mail) throws Exception {
+			@XPathParam("/Inscription/personne/prenom") String prenom,
+			@XPathParam("/Inscription/personne/adresse") String adresse,
+			@XPathParam("/Inscription/personne/mail") String mail,
+			@XPathParam("/Inscription/personne/coordonnee") Coordonnee myCoordonnee) throws Exception {
 
 		System.out.println("lName: " + nom + "||");
 		System.out.println("fName: " + prenom + "||");
@@ -43,7 +44,8 @@ public class InscriptionEndpoint {
 		Adresse myAddress = new Adresse(adresse);
 
 		 // invoque le service "CoVoiturageInscriptionService" pour inscrire un personnel
-	    String resultat = inscriptionService.inscrire(myName, myFirstName, myMail, myAddress);
+	    String resultat = inscriptionService.inscrire(myName, myFirstName,
+	    		myMail, myAddress, myCoordonnee);
 	    //logger.info(resultat);
 	     
 	     // construit le xml résultat
@@ -55,5 +57,4 @@ public class InscriptionEndpoint {
 
 	     return  elt;	
 	}
-
 }

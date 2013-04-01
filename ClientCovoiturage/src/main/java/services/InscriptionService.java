@@ -9,7 +9,7 @@ import iaws.covoiturage.domain.nomenclature.Prenom;
 public interface InscriptionService {
 
 	String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
-			Adresse myAddress);
+			Adresse myAdress, Coordonnee myCoordonnee);
 	
 	Coordonnee getLatitudeAndLongitude(String adresse);
 }

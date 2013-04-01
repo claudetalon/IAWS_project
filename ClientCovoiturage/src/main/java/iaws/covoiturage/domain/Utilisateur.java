@@ -37,15 +37,15 @@ public class Utilisateur {
 		return c;
 	}
 	
-	public String getCode(Utilisateur u) {
+	public int getCode(Utilisateur u) {
 		
 		// E-mail déjà utilise
 		if (u.getUserMail().getMail().equals(mail.getMail())) {
-			return "KO 100";
+			return 100; // KO
 		} else if (u.getUserMail().isMail()) { // E-mail non valide
-			return "KO 110";
+			return 110; // KO
 		}
 		
-		return "OK";
+		return 0; // OK
 	}
 }

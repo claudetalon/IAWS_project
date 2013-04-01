@@ -2,10 +2,14 @@
 
 <Inscription
 xmlns="http://mycompany.com/hr/schemas">
-	<pers>
+	<personne>
 		<nom>monNom</nom>
 		<prenom>monPrenom</prenom>
 		<mail>test@univ-tlse3.fr</mail>
 		<adresse>monAdresse</adresse>
-	</pers>
+		<coordonnee>
+			<latitude>12.5</latitude>
+			<longitude>13.3</longitude>
+		</coordonnee>
+	</personne>
 </Inscription>

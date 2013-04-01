@@ -3,6 +3,7 @@
 <Inscription
 xmlns="http://mycompany.com/hr/schemas">
 	<personne>
+		<id>1</id>
 		<nom>monNom</nom>
 		<prenom>monPrenom</prenom>
 		<mail>test@univ-tlse3.fr</mail>

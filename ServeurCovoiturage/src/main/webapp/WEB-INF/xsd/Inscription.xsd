@@ -21,6 +21,7 @@ xmlns:hr="http://mycompany.com/hr/schemas">
 	
  	<xs:complexType name="PersonnelType">
  		<xs:sequence>
+ 			<xs:element name="id" type="xs:integer"/>
  			<xs:element name="nom" type="xs:string"/>
  			<xs:element name="prenom" type="xs:string"/>
  			<xs:element name="mail" type="xs:string"/>

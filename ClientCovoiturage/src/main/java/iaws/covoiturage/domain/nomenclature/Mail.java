@@ -8,7 +8,7 @@ public class Mail {
 	String mail;
 
 	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-		    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
+		    Pattern.compile("^[A-Z0-9._%+-]+@univ-tlse3.fr$",
 		    		Pattern.CASE_INSENSITIVE);
 
 	public Mail(String mail) {
@@ -23,8 +23,8 @@ public class Mail {
 		this.mail = mail;
 	}
 
-	boolean isMail(String mail) {
-		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(mail);
+	public boolean isMail() {
+		Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(mail);
         return matcher.find();
 	}
 }

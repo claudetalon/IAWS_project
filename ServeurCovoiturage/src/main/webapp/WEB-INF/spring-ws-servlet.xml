@@ -18,7 +18,7 @@
           class="covoiturage.InscriptionEndpoint">
         <constructor-arg name="InscriptionService" ref="InscriptionService"/>
     </bean>
-    <bean id="InscriptionService" class="iaws.covoiturage.services.impl.InscriptionImpl"/>
+    <bean id="InscriptionService" class="services.impl.InscriptionImpl"/>
 
 
 </beans>

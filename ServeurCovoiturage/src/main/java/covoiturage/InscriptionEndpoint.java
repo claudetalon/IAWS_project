@@ -12,7 +12,6 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import org.springframework.ws.server.endpoint.annotation.XPathParam;
 import org.jdom2.Element;
-import org.jdom2.JDOMException;
 
 @Endpoint
 public class InscriptionEndpoint {
@@ -27,12 +26,14 @@ public class InscriptionEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "InscriptionRequest")
 	@ResponsePayload
-	public Element handleInscriptionRequest(@XPathParam("/Inscription/personne/nom") String nom,
+	public Element handleInscriptionRequest(@XPathParam("/Inscription/personne/id") int id,
+			@XPathParam("/Inscription/personne/nom") String nom,
 			@XPathParam("/Inscription/personne/prenom") String prenom,
 			@XPathParam("/Inscription/personne/adresse") String adresse,
 			@XPathParam("/Inscription/personne/mail") String mail,
 			@XPathParam("/Inscription/personne/coordonnee") Coordonnee myCoordonnee) throws Exception {
 
+		System.out.println("lName: " + id + "||");
 		System.out.println("lName: " + nom + "||");
 		System.out.println("fName: " + prenom + "||");
 		System.out.println("Perso: " + adresse + "||");
@@ -43,17 +44,17 @@ public class InscriptionEndpoint {
 		Mail myMail = new Mail(mail);
 		Adresse myAddress = new Adresse(adresse);
 
-		 // invoque le service "CoVoiturageInscriptionService" pour inscrire un personnel
-	    String resultat = inscriptionService.inscrire(myName, myFirstName,
+
+	    String resultat = inscriptionService.inscrire(id, myName, myFirstName,
 	    		myMail, myAddress, myCoordonnee);
-	    //logger.info(resultat);
+
 	     
-	     // construit le xml résultat
+	     
 	     InscriptionImpl myImpl = new InscriptionImpl();
 	     Coordonnee coord = myImpl.getLatitudeAndLongitude(adresse);
 	     Element elt = null;
 	     if(coord != null)
-	     	elt = XmlHelper.getResultsInXml(coord, nom, prenom, mail, adresse);
+	     	elt = XmlHelper.resultsXml(coord, id, nom, prenom, mail, adresse);
 
 	     return  elt;	
 	}

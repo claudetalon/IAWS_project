@@ -29,8 +29,8 @@ public class XmlHelper {
    		racine.addNamespaceDeclaration(XSI);
    		racine.setAttribute("schemaLocation", "http://iaws/ws/contractfirst/inscription ../resources/CoVoiturageIns.xsd", XSI);
    		Document doc = new Document(racine);
-   		Element personnel = new Element("personnel","http://iaws/ws/contractfirst/inscription");
-        racine.addContent(personnel);
+   		Element user = new Element("personnel","http://iaws/ws/contractfirst/inscription");
+        racine.addContent(user);
         Element familyname = new Element("nom","http://iaws/ws/contractfirst/inscription");
         familyname.setText(nom);
         Element firstname = new Element("prenom","http://iaws/ws/contractfirst/inscription");
@@ -39,18 +39,20 @@ public class XmlHelper {
         email.setText(mail);
         Element adr = new Element("adresse","http://iaws/ws/contractfirst/inscription");
         adr.setText(adresse);
-        personnel.addContent(familyname);
-        personnel.addContent(firstname);
-        personnel.addContent(email);
-        personnel.addContent(adr);
+        
         Element coordonnees = new Element("coordonnees","http://iaws/ws/contractfirst/inscription");
-        racine.addContent(coordonnees);
         Element lat = new Element("latitude","http://iaws/ws/contractfirst/inscription");
         lat.setText(Double.toString(coord.getLatitude()));
         Element lon = new Element("longitude","http://iaws/ws/contractfirst/inscription");
         lon.setText(Double.toString(coord.getLongitude()));
         coordonnees.addContent(lat);
         coordonnees.addContent(lon);
+        
+        user.addContent(familyname);
+        user.addContent(firstname);
+        user.addContent(email);
+        user.addContent(adr);
+        user.addContent(coordonnees);
         
         return doc.getRootElement();
     }

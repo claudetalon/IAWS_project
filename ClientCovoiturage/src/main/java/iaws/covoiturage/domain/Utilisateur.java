@@ -7,13 +7,16 @@ import iaws.covoiturage.domain.nomenclature.Prenom;
 
 public class Utilisateur {
 
+	private int id;
 	private Prenom prenom;
 	private Nom nom;
 	private Mail mail;
 	private Adresse adresse;
 	private Coordonnee c;
 	
-	public Utilisateur(Prenom prenom, Nom nom, Mail mail, Adresse adresse, Coordonnee c) {
+	public Utilisateur(int id, Prenom prenom, Nom nom, Mail mail,
+			Adresse adresse, Coordonnee c) {
+		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.mail = mail;
@@ -33,11 +36,15 @@ public class Utilisateur {
 		return mail;
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	public Coordonnee getCoordonnee() {
 		return c;
 	}
 	
-	public int getCode(Utilisateur u) {
+	public int codeInscription(Utilisateur u) {
 		
 		// E-mail déjà utilise
 		if (u.getUserMail().getMail().equals(mail.getMail())) {

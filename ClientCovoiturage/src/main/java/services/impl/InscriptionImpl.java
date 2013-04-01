@@ -1,6 +1,8 @@
 package services.impl;
 
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import iaws.covoiturage.domain.Coordonnee;
 import iaws.covoiturage.domain.Utilisateur;
@@ -12,18 +14,23 @@ import services.InscriptionService;
 
 public class InscriptionImpl implements InscriptionService {
 
-	List<Utilisateur> users;
+	Map<Integer, Utilisateur> users;
 	
-	public String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
+	public String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAdress, Coordonnee myCoordonnee) {
 		
 		String s = null;
-		Utilisateur user = new Utilisateur(myFirstName, myName, myMail, myAdress, myCoordonnee);
+		Utilisateur user = new Utilisateur(id, myFirstName, myName, myMail,
+				myAdress, myCoordonnee);
 		
 		boolean b = false;
 		
-		for (int i = 0; i < users.size(); i++) {
-			switch (user.getCode(users.get(i))) {
+		for (Iterator<Entry<Integer, Utilisateur>> iterator = users.entrySet()
+				.iterator(); iterator.hasNext() && !b;) {
+			
+			Entry<Integer, Utilisateur> e = iterator.next();
+			
+			switch (user.codeInscription(e.getValue())) {
 			case 100: // e-mail utilisé
 				s = "NOK : 100";
 				break;
@@ -37,7 +44,6 @@ public class InscriptionImpl implements InscriptionService {
 			
 			if (s != null) {
 				b = true;
-				i = users.size() -1;
 			}
 		}
 		
@@ -45,8 +51,8 @@ public class InscriptionImpl implements InscriptionService {
 			return s;
 		}
 		
-		users.add(user);
-		return "OK";
+		users.put(id, user);
+		return "Ok";
 	}
 
 	public Coordonnee getLatitudeAndLongitude(String adresse) {

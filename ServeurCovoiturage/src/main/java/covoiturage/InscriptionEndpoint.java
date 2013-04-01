@@ -27,7 +27,7 @@ public class InscriptionEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "InscriptionRequest")
 	@ResponsePayload
-	public Element handleInscriptionRequest(@XPathParam("/Inscription/pers/nom") String nom,
+	public Element handleInscriptionRequest(@XPathParam("/Inscription/personne/nom") String nom,
 			@XPathParam("/Inscription/personne/prenom") String prenom,
 			@XPathParam("/Inscription/personne/adresse") String adresse,
 			@XPathParam("/Inscription/personne/mail") String mail,

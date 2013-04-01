@@ -7,10 +7,17 @@ xmlns:hr="http://mycompany.com/hr/schemas">
 	<xs:element name="Inscription">
       <xs:complexType>
        <xs:all>
-         <xs:element name="pers" type="hr:PersonnelType"/>
+         <xs:element name="personne" type="hr:PersonnelType"/>
        </xs:all>
       </xs:complexType>
     </xs:element>
+	
+	<xs:complexType name="CoordonneeType">
+		<xs:all>
+				<xs:element name="latitude" type="xs:double"/>
+				<xs:element name="longitude" type="xs:double"/>
+		</xs:all>
+	</xs:complexType>
 	
  	<xs:complexType name="PersonnelType">
  		<xs:sequence>
@@ -18,6 +25,7 @@ xmlns:hr="http://mycompany.com/hr/schemas">
  			<xs:element name="prenom" type="xs:string"/>
  			<xs:element name="mail" type="xs:string"/>
  			<xs:element name="adresse" type="xs:string"/>
+ 			<xs:element name="coordonnee" type="hr:CoordonneeType" xmlns:hr="http://mycompany.com/hr/schemas"/>
  		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

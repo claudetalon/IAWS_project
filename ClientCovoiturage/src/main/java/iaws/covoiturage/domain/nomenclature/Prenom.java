@@ -4,10 +4,16 @@ public class Prenom {
 
 	String prenom;
 
+	/**
+	 * @param prenom
+	 */
 	public Prenom(String prenom) {
 		this.prenom = prenom;
 	}
 
+	/**
+	 * @return prenom
+	 */
 	public String getPrenom() {
 		return prenom;
 	}

@@ -29,8 +29,19 @@ import services.InscriptionService;
 
 public class InscriptionImpl implements InscriptionService {
 
+	/** Map contenant les utilisateurs inscrits */
 	Map<Integer, Utilisateur> users;
 	
+	/**
+	 * Permet à un utilisateur de s'inscrire pour le covoiturage
+	 * @param id
+	 * @param myName
+	 * @param myFirstName
+	 * @param myMail
+	 * @param myAdress
+	 * @param myCoordonnee
+	 * @return le code de validation ou d'erreur
+	 */
 	public String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAdress, Coordonnee myCoordonnee) {
 		
@@ -71,6 +82,12 @@ public class InscriptionImpl implements InscriptionService {
 	}
 
 	/**
+	 * Permet d'avoir la latitude et la longitude d'une adresse
+	 * @param numero
+	 * @param rue
+	 * @param ville
+	 * @return la coordonnée représentant ce lieu à partir d'open street map
+	 *
 	 * Adresse : Numéro facultatif, rue ou avenue etc, ville
 	 * http://nominatim.openstreetmap.org/search/fr/toulouse/Avenue%20de%20l'urss/17?format=xml&polygon=1&addressdetails=1
 	 */

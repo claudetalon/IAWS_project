@@ -6,13 +6,6 @@
        http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd">
 
     <sws:annotation-driven/>
-    
-    <sws:dynamic-wsdl id="coVoiturage"
-                      portTypeName="CovoituragePort"
-                      locationUri="/InscriptionService/"
-                      targetNamespace="http://iaws/ws/contractfirst/inscription">
-        <sws:xsd location="/WEB-INF/xsd/Inscription.xsd"/>
-    </sws:dynamic-wsdl>
 
 	<bean id="InscriptionEndPoint"
           class="covoiturage.InscriptionEndpoint">
@@ -20,5 +13,11 @@
     </bean>
     <bean id="InscriptionService" class="services.impl.InscriptionImpl"/>
 
+    <sws:dynamic-wsdl id="coVoiturage"
+                      portTypeName="CovoituragePort"
+                      locationUri="/InscriptionService/"
+                      targetNamespace="http://iaws/ws/contractfirst/inscription">
+        <sws:xsd location="/WEB-INF/xsd/Inscription.xsd"/>
+    </sws:dynamic-wsdl>
 
 </beans>

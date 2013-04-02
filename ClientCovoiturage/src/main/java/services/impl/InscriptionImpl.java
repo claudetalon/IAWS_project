@@ -43,11 +43,17 @@ public class InscriptionImpl implements InscriptionService {
 	 * @return le code de validation ou d'erreur
 	 */
 	public String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
-			Adresse myAdress, Coordonnee myCoordonnee) {
+			Adresse myAdress) {
 		
 		String s = null;
 		Utilisateur user = new Utilisateur(id, myFirstName, myName, myMail,
-				myAdress, myCoordonnee);
+				myAdress);
+		
+		if (! user.getUserMail().isMail()) {
+			return "KO 110";
+		} else if (user.getCoordonnee() == null) {
+			return "KO 200";
+		}
 		
 		boolean b = false;
 		
@@ -56,16 +62,8 @@ public class InscriptionImpl implements InscriptionService {
 			
 			Entry<Integer, Utilisateur> e = iterator.next();
 			
-			switch (user.codeInscription(e.getValue())) {
-			case 100: // e-mail utilisé
-				s = "NOK : 100";
-				break;
-			case 110: // e-mail invalide
-				s = "NOK : 110";
-				break;
-			case 200: // Open Street Map
-				s = "NOK : 200";
-				break;
+			if (user.getUserMail().getMail().equals(e.getValue().getUserMail().getMail())) {
+				s = "KO 100";
 			}
 			
 			if (s != null) {

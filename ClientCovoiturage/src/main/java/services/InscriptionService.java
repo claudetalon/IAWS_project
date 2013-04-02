@@ -19,7 +19,7 @@ public interface InscriptionService {
 	 * @return le code de validation ou d'erreur
 	 */
 	String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
-			Adresse myAdress, Coordonnee myCoordonnee);
+			Adresse myAdress);
 	
 	/**
 	 * Permet d'avoir la latitude et la longitude d'une adresse

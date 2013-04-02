@@ -50,14 +50,14 @@ public class InscriptionEndpoint {
 
 
 	    String resultat = inscriptionService.inscrire(id, myName, myFirstName,
-	    		myMail, myAddress, myCoordonnee);
+	    		myMail, myAddress);
 
 	     
 	     
 	     InscriptionImpl myImpl = new InscriptionImpl();
 	     Coordonnee coord = myImpl.getLatitudeAndLongitude(numero, rue, ville);
 	     Element elt = null;
-	     if(coord != null)
+	     if (coord != null)
 	     	elt = XmlHelper.resultsXml(coord, id, nom, prenom, mail, numero, rue, ville);
 
 	     return  elt;	

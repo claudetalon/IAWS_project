@@ -1,5 +1,7 @@
 package iaws.covoiturage.domain;
 
+import services.InscriptionService;
+import services.impl.InscriptionImpl;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
 import iaws.covoiturage.domain.nomenclature.Nom;
@@ -23,13 +25,14 @@ public class Utilisateur {
 	 * @param c
 	 */
 	public Utilisateur(int id, Prenom prenom, Nom nom, Mail mail,
-			Adresse adresse, Coordonnee c) {
+			Adresse adresse) {
 		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.mail = mail;
 		this.adresse = adresse;
-		this.c = c;
+		InscriptionService i = new InscriptionImpl();
+		c = i.getLatitudeAndLongitude(adresse.getNumero(), adresse.getRue(), adresse.getVille());
 	}
 	
 	/**
@@ -69,8 +72,8 @@ public class Utilisateur {
 	 * @param u
 	 * @return
 	 */
-	public int codeInscription(Utilisateur u) {
-		
+	public Utilisateur getUser() {
+		/*
 		// E-mail déjà utilise
 		if (u.getUserMail().getMail().equals(mail.getMail())) {
 			return 100; // KO
@@ -79,7 +82,7 @@ public class Utilisateur {
 		} else if (u.getCoordonnee() == null) {
 			return 200; // KO
 		}
-		
-		return 0; // OK
+		*/
+		return this; // OK
 	}
 }

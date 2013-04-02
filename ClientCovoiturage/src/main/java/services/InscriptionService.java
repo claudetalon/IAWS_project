@@ -1,6 +1,9 @@
 package services;
 
+import java.util.Map;
+
 import iaws.covoiturage.domain.Coordonnee;
+import iaws.covoiturage.domain.Utilisateur;
 import iaws.covoiturage.domain.nomenclature.Adresse;
 import iaws.covoiturage.domain.nomenclature.Mail;
 import iaws.covoiturage.domain.nomenclature.Nom;
@@ -15,7 +18,6 @@ public interface InscriptionService {
 	 * @param myFirstName
 	 * @param myMail
 	 * @param myAdress
-	 * @param myCoordonnee
 	 * @return le code de validation ou d'erreur
 	 */
 	String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
@@ -29,4 +31,6 @@ public interface InscriptionService {
 	 * @return la coordonnée représentant ce lieu à partir d'open street map
 	 */
 	Coordonnee getLatitudeAndLongitude(int numero, String rue, String ville);
+	
+	public Map<Integer, Utilisateur> getUsers();
 }

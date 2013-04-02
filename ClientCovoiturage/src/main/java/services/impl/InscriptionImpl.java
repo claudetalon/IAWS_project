@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,7 +31,7 @@ import services.InscriptionService;
 public class InscriptionImpl implements InscriptionService {
 
 	/** Map contenant les utilisateurs inscrits */
-	Map<Integer, Utilisateur> users;
+	Map<Integer, Utilisateur> users = new HashMap<Integer, Utilisateur>();
 	private static int id = 0;
 	
 	/**
@@ -63,7 +64,8 @@ public class InscriptionImpl implements InscriptionService {
 			
 			Entry<Integer, Utilisateur> e = iterator.next();
 			
-			if (user.getUserMail().getMail().equals(e.getValue().getUserMail().getMail())) {
+			if (user.getUserMail().getMail().equals
+					(e.getValue().getUserMail().getMail())) {
 				s = "KO 100";
 			}
 			
@@ -100,7 +102,6 @@ public class InscriptionImpl implements InscriptionService {
 		requete = requete.replaceAll("\\s", "%20");
 		
 
-		// or if you prefer DOM:
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db;
 		Document doc = null;
@@ -123,6 +124,10 @@ public class InscriptionImpl implements InscriptionService {
 		}
 		
 		return null;
+	}
+	
+	public Map<Integer, Utilisateur> getUsers() {
+		return users;
 	}
 	
 	// Example

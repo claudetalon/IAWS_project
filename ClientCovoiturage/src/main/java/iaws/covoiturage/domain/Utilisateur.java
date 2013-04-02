@@ -16,7 +16,6 @@ public class Utilisateur {
 	private Coordonnee c;
 	
 	/**
-	 * @param id
 	 * @param prenom
 	 * @param nom
 	 * @param mail
@@ -58,22 +57,11 @@ public class Utilisateur {
 		return c;
 	}
 	
-	/**
-	 * TODO
-	 * @param u
-	 * @return
-	 */
-	public Utilisateur getUser() {
-		/*
-		// E-mail déjà utilise
-		if (u.getUserMail().getMail().equals(mail.getMail())) {
-			return 100; // KO
-		} else if (u.getUserMail().isMail()) { // E-mail non valide
-			return 110; // KO
-		} else if (u.getCoordonnee() == null) {
-			return 200; // KO
-		}
-		*/
-		return this; // OK
+	public Nom getNom() {
+		return nom;
+	}
+	
+	public Prenom getPrenom() {
+		return prenom;
 	}
 }

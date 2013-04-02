@@ -31,6 +31,7 @@ public class InscriptionImpl implements InscriptionService {
 
 	/** Map contenant les utilisateurs inscrits */
 	Map<Integer, Utilisateur> users;
+	private static int id = 0;
 	
 	/**
 	 * Permet à un utilisateur de s'inscrire pour le covoiturage
@@ -42,11 +43,11 @@ public class InscriptionImpl implements InscriptionService {
 	 * @param myCoordonnee
 	 * @return le code de validation ou d'erreur
 	 */
-	public String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
+	public String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAdress) {
 		
 		String s = null;
-		Utilisateur user = new Utilisateur(id, myFirstName, myName, myMail,
+		Utilisateur user = new Utilisateur(myFirstName, myName, myMail,
 				myAdress);
 		
 		if (! user.getUserMail().isMail()) {
@@ -76,6 +77,8 @@ public class InscriptionImpl implements InscriptionService {
 		}
 		
 		users.put(id, user);
+		id++;
+		
 		return "Ok";
 	}
 

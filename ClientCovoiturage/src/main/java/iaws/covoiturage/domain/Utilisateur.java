@@ -9,7 +9,6 @@ import iaws.covoiturage.domain.nomenclature.Prenom;
 
 public class Utilisateur {
 
-	private int id;
 	private Prenom prenom;
 	private Nom nom;
 	private Mail mail;
@@ -24,9 +23,8 @@ public class Utilisateur {
 	 * @param adresse
 	 * @param c
 	 */
-	public Utilisateur(int id, Prenom prenom, Nom nom, Mail mail,
+	public Utilisateur(Prenom prenom, Nom nom, Mail mail,
 			Adresse adresse) {
-		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.mail = mail;
@@ -51,13 +49,6 @@ public class Utilisateur {
 	 */
 	public Mail getUserMail() {
 		return mail;
-	}
-	
-	/**
-	 * @return id
-	 */
-	public int getId() {
-		return id;
 	}
 	
 	/**

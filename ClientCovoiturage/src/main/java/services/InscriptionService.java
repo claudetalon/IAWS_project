@@ -18,7 +18,7 @@ public interface InscriptionService {
 	 * @param myCoordonnee
 	 * @return le code de validation ou d'erreur
 	 */
-	String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
+	String inscrire(Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAdress);
 	
 	/**

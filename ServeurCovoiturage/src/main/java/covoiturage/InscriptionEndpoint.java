@@ -26,7 +26,7 @@ public class InscriptionEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "InscriptionRequest")
 	@ResponsePayload
-	public Element handleInscriptionRequest(@XPathParam("/Inscription/personne/id") int id,
+	public Element handleInscriptionRequest(
 			@XPathParam("/Inscription/personne/nom") String nom,
 			@XPathParam("/Inscription/personne/prenom") String prenom,
 			@XPathParam("/Inscription/personne/adresse/numero") int numero,
@@ -35,7 +35,6 @@ public class InscriptionEndpoint {
 			@XPathParam("/Inscription/personne/mail") String mail,
 			@XPathParam("/Inscription/personne/coordonnee") Coordonnee myCoordonnee) throws Exception {
 
-		System.out.println("lName: " + id + "||");
 		System.out.println("lName: " + nom + "||");
 		System.out.println("fName: " + prenom + "||");
 		System.out.println("Num: " + numero + "||");
@@ -49,7 +48,7 @@ public class InscriptionEndpoint {
 		Adresse myAddress = new Adresse(numero, rue, ville);
 
 
-	    String resultat = inscriptionService.inscrire(id, myName, myFirstName,
+	    String resultat = inscriptionService.inscrire(myName, myFirstName,
 	    		myMail, myAddress);
 
 	     
@@ -58,7 +57,7 @@ public class InscriptionEndpoint {
 	     Coordonnee coord = myImpl.getLatitudeAndLongitude(numero, rue, ville);
 	     Element elt = null;
 	     if (coord != null)
-	     	elt = XmlHelper.resultsXml(coord, id, nom, prenom, mail, numero, rue, ville);
+	     	elt = XmlHelper.resultsXml(coord, nom, prenom, mail, numero, rue, ville);
 
 	     return  elt;	
 	}

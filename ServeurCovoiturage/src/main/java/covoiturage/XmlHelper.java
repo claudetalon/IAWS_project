@@ -20,7 +20,7 @@ public class XmlHelper {
      * @return  the root Element
      */
  
-    public static Element resultsXml(Coordonnee coord, int id, String nom, String prenom, String mail,
+    public static Element resultsXml(Coordonnee coord, String nom, String prenom, String mail,
     		int num, String street, String town) {
 
    		Element racine = new Element("CoVoiturage");
@@ -31,8 +31,6 @@ public class XmlHelper {
    		Document doc = new Document(racine);
    		Element user = new Element("personnel","http://iaws/ws/contractfirst/inscription");
         racine.addContent(user);
-        Element userid = new Element("id","http://iaws/ws/contractfirst/inscription");
-        userid.setText(String.valueOf(id));
         Element familyname = new Element("nom","http://iaws/ws/contractfirst/inscription");
         familyname.setText(nom);
         Element firstname = new Element("prenom","http://iaws/ws/contractfirst/inscription");
@@ -60,7 +58,6 @@ public class XmlHelper {
         coordonnees.addContent(lat);
         coordonnees.addContent(lon);
         
-        user.addContent(userid);
         user.addContent(familyname);
         user.addContent(firstname);
         user.addContent(email);

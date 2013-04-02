@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+targetNamespace="http://mycompany.com/hr/schemas"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:hr="http://mycompany.com/hr/schemas">
+    
+	<xs:element name="Inscription">
+      <xs:complexType>
+       <xs:all>
+         <xs:element name="personne" type="hr:PersonnelType"/>
+       </xs:all>
+      </xs:complexType>
+    </xs:element>
+	
+	<xs:complexType name="CoordonneeType">
+		<xs:all>
+				<xs:element name="latitude" type="xs:double"/>
+				<xs:element name="longitude" type="xs:double"/>
+		</xs:all>
+	</xs:complexType>
+	
+ 	<xs:complexType name="PersonnelType">
+ 		<xs:sequence>
+ 			<xs:element name="id" type="xs:integer"/>
+ 			<xs:element name="nom" type="xs:string"/>
+ 			<xs:element name="prenom" type="xs:string"/>
+ 			<xs:element name="mail" type="xs:string"/>
+ 			<xs:element name="adresse" type="xs:string"/>
+ 			<xs:element name="coordonnee" type="hr:CoordonneeType" xmlns:hr="http://mycompany.com/hr/schemas"/>
+ 		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

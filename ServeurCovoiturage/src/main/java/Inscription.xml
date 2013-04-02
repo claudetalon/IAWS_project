@@ -7,7 +7,11 @@ xmlns="http://mycompany.com/hr/schemas">
 		<nom>monNom</nom>
 		<prenom>monPrenom</prenom>
 		<mail>test@univ-tlse3.fr</mail>
-		<adresse>monAdresse</adresse>
+		<adresse>
+			<numero>17</numero>
+			<voie>Avenue de l'URSS</voie>
+			<ville>Toulouse</ville>
+		</adresse>
 		<coordonnee>
 			<latitude>12.5</latitude>
 			<longitude>13.3</longitude>

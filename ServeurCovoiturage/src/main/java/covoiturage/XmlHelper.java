@@ -20,7 +20,8 @@ public class XmlHelper {
      * @return  the root Element
      */
  
-    public static Element resultsXml(Coordonnee coord, int id, String nom, String prenom, String mail, String adresse) {
+    public static Element resultsXml(Coordonnee coord, int id, String nom, String prenom, String mail,
+    		int num, String street, String town) {
 
    		Element racine = new Element("CoVoiturage");
    		racine.setNamespace(Namespace.getNamespace("http://iaws/ws/contractfirst/inscription"));
@@ -38,8 +39,18 @@ public class XmlHelper {
         firstname.setText(prenom);
         Element email = new Element("mail","http://iaws/ws/contractfirst/inscription");
         email.setText(mail);
+        
         Element adr = new Element("adresse","http://iaws/ws/contractfirst/inscription");
-        adr.setText(adresse);
+        Element numero = new Element("numero","http://iaws/ws/contractfirst/inscription");
+        numero.setText(String.valueOf(num));
+        Element rue = new Element("rue","http://iaws/ws/contractfirst/inscription");
+        numero.setText(street);
+        Element ville = new Element("ville","http://iaws/ws/contractfirst/inscription");
+        numero.setText(town);
+        
+        adr.addContent(numero);
+        adr.addContent(rue);
+        adr.addContent(ville);
         
         Element coordonnees = new Element("coordonnees","http://iaws/ws/contractfirst/inscription");
         Element lat = new Element("latitude","http://iaws/ws/contractfirst/inscription");

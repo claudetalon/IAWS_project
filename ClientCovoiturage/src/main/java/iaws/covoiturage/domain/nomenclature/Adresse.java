@@ -2,17 +2,25 @@ package iaws.covoiturage.domain.nomenclature;
 
 public class Adresse {
 
-	private String adresse;
-
-	public Adresse(String adresse) {
-		this.adresse = adresse;
+	private int numero;
+	private String rue;
+	private String ville;
+	
+	public Adresse(int numero, String rue, String ville) {
+		this.numero = numero;
+		this.rue = rue;
+		this.ville = ville;
 	}
 
-	public String getAdresse() {
-		return adresse;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public String getRue() {
+		return rue;
+	}
+	
+	public String getVille() {
+		return ville;
 	}
 }

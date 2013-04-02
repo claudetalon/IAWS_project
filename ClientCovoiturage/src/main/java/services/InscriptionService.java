@@ -11,5 +11,5 @@ public interface InscriptionService {
 	String inscrire(int id, Nom myName, Prenom myFirstName, Mail myMail,
 			Adresse myAdress, Coordonnee myCoordonnee);
 	
-	Coordonnee getLatitudeAndLongitude(String adresse);
+	Coordonnee getLatitudeAndLongitude(int numero, String rue, String ville);
 }
